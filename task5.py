@@ -17,6 +17,7 @@ else:
 
 # Reading config file and parameters
 try:
+    os.chdir(os.path.dirname(__file__))
     path = os.path.abspath(conf_file)
     print('Reading monitoring script {} config file: {}'.format(sys.argv[0], path))
     config = configparser.ConfigParser()
@@ -65,7 +66,7 @@ def counter(cnt=None):
 while True:
     if iterations > 0 and i < iterations:
         i += 1
-    else:
+    elif 0 < iterations == i:
         break
     cpu_load = str(psutil.cpu_percent())
     mem_load = str(psutil.virtual_memory().used)
